@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: jenkins-d
+  name: jenkins-d
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-d
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: jenkins-d
+    spec:
+      containers:
+      - image: jenkins/jenkins
+        name: jenkins
+        resources: {}
+status: {}
