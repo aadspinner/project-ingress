@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"name":"aws-auth","namespace":"kube-system"},"data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::975049951522:role/eksctl-dev-cluster1-nodegroup-spot-NodeInstanceRole-flBiY8yInsQI\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- userarn: arn:aws:iam::975049951522:user/ramchand\n  username: ramchand\n  groups:\n    - system:masters\n"}}
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::975049951522:role/eksctl-dev-cluster1-nodegroup-spot-NodeInstanceRole-flBiY8yInsQI
+      username: system:node:{{EC2PrivateDNSName}}
+    - rolearn: arn:aws:iam::975049951522:role/eksctl-dev-cluster2-nodegroup-t3me-NodeInstanceRole-zqM4FXXybqBG
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+    - rolearn: arn:aws:iam::975049951522:role/eksctl-dev-cluster2-nodegroup-t3me-NodeInstanceRole-zqM4FXXybqBG
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+  mapUsers: |
+    - userarn: arn:aws:iam::975049951522:user/ramchand
+      username: ramchand
+      groups:
+        - system:masters
