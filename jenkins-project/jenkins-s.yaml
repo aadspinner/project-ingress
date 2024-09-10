@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 # apiVersion: v1
 # kind: Service
@@ -18,3 +19,24 @@
 #   type: LoadBalancer
 # status:
 #   loadBalancer: {}
+=======
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: jenkins-s
+  name: jenkins-s
+  namespace: apps
+spec:
+  ports:
+  - name: jenkins-port
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: jenkins-s
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+>>>>>>> Stashed changes
