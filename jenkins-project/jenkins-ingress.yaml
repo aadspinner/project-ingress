@@ -17,4 +17,4 @@ spec:
             service:
               name: jenkins-s
               port:
-                number: 5678
+                number: 80
