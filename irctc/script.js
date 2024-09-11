@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         console.log('Form submitted'); // Log form submission
 
         const trainNumber = document.getElementById('trainNumber').value;
-        const apiKey = '2a8954b37cmsh2ba9ba40a5e0849p1c3794jsne6bd996235c3';
+        const apiKey = 'your api key';
 
         console.log('Train Number:', trainNumber); // Log train number
 
