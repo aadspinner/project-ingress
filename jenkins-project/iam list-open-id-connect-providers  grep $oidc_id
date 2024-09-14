@@ -1,0 +1,7 @@
+{
+    "OpenIDConnectProviderList": [
+        {
+            "Arn": "arn:aws:iam::975049951522:oidc-provider/oidc.eks.ap-south-1.amazonaws.com/id/028F33E563A6B0BA5F457D2D52E525E8"
+        }
+    ]
+}
