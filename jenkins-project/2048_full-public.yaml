@@ -49,6 +49,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
 spec:
+  rules:
+  - host: game-2048.com
+spec:
   ingressClassName: alb
   rules:
     - http:

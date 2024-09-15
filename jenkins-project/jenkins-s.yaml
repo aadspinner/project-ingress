@@ -3,17 +3,17 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: jenkins-s
+    app: jenkins-d
   name: jenkins-s
   namespace: apps
 spec:
   ports:
-  - name: port-80
+  - name: 5678-8080
     port: 80
     protocol: TCP
     targetPort: 8080
   selector:
-    app: jenkins-s
-  type: LoadBalancer
+    app: jenkins-d
+  type: NodePort
 status:
   loadBalancer: {}
