@@ -1,19 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jenkins-d
+  name: jenkins-d
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-d
+  template:
+    metadata:
+      labels:
+        app: jenkins-d
+    spec:
+      containers:
+      - image: jenkins/jenkins
+        name: jenkins
+        resources: {}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: jenkins-d
   name: jenkins-s
   namespace: apps
 spec:
   ports:
-  - name: 5678-8080
-    port: 80
+  - name: jenkins-s
+    port: 5678
     protocol: TCP
-    targetPort: 8080
+    targetPort: 5678
   selector:
     app: jenkins-d
   type: NodePort
-status:
-  loadBalancer: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: apps
+  name: jenkins-ing
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+  - host: open-jen.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jenkins-s
+            port:
+              number: 5678
