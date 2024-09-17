@@ -433,7 +433,6 @@ spec:
         - --validating-webhook-certificate=/usr/local/certificates/cert
         - --validating-webhook-key=/usr/local/certificates/key
         - --enable-metrics=false
-        - -$(POD_NAMESPACE)/nginx-configuration
         env:
         - name: POD_NAME
           valueFrom:
