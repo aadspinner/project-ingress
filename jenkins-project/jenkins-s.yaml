@@ -16,10 +16,11 @@ spec:
         app: jenkins-d
     spec:
       containers:
-      - image: jenkins/jenkins
+      - image: nginx:latest
         name: jenkins
         resources: {}
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -48,7 +49,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: open-jen.com
+  - host:
     http:
       paths:
       - path: /
@@ -57,4 +58,4 @@ spec:
           service:
             name: jenkins-s
             port:
-              number: 5678
+              number: 80
