@@ -1,9 +1,0 @@
-spec:
-  listeners:
-  - name: http-8083
-    port: 8083
-    protocol: HTTP
-  - name: https-8443
-    port: 8443
-    protocol: HTTP
-    ssl: true
